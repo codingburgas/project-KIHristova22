@@ -1,0 +1,33 @@
+Users
+------
+Id (PK)
+Email
+PasswordHash
+
+
+Categories
+-----------
+Id (PK)
+Name
+
+
+Books
+------
+Id (PK)
+Title
+Price
+CategoryId (FK)
+
+
+Orders
+-------
+Id (PK)
+UserId (FK)
+CreatedAt
+
+
+OrderItems
+-----------
+OrderId (PK, FK)
+BookId (PK, FK)
+Quantity

@@ -1,0 +1,59 @@
+/Models
+BaseEntity.cs
+Book.cs
+Category.cs
+Order.cs
+OrderItem.cs
+User.cs
+
+/Data
+ApplicationDbContext.cs
+/Repositories
+IBookRepository.cs
+BookRepository.cs
+ICategoryRepository.cs
+CategoryRepository.cs
+IOrderRepository.cs
+OrderRepository.cs
+
+/Services
+BookService.cs
+CategoryService.cs
+OrderService.cs
+UserService.cs
+
+/ViewModels
+BookViewModel.cs
+CreateBookViewModel.cs
+EditBookViewModel.cs
+CategoryViewModel.cs
+CreateCategoryViewModel.cs
+EditCategoryViewModel.cs
+
+/Controllers
+BookController.cs
+CategoryController.cs
+OrderController.cs
+AdminController.cs
+AccountController.cs (optional if you extend Identity)
+
+/Views
+  /Home
+    Index.cshtml
+    Privacy.cshtml
+  /Books
+    Index.cshtml
+    Details.cshtml
+    Create.cshtml
+    Edit.cshtml
+  /Categories
+    Index.cshtml
+    Create.cshtml
+    Edit.cshtml
+  /Orders
+    Index.cshtml
+    Details.cshtml
+  /Shared
+    _Layout.cshtml
+    _ViewImports.cshtml
+    _ViewStart.cshtml
