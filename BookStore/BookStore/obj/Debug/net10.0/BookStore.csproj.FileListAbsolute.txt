@@ -290,3 +290,4 @@ C:\Users\krist\Documents\project-KIHristova22\BookStore\BookStore\obj\Debug\net1
 C:\Users\krist\Documents\project-KIHristova22\BookStore\BookStore\obj\Debug\net10.0\BookStore.pdb
 C:\Users\krist\Documents\project-KIHristova22\BookStore\BookStore\obj\Debug\net10.0\BookStore.genruntimeconfig.cache
 C:\Users\krist\Documents\project-KIHristova22\BookStore\BookStore\obj\Debug\net10.0\ref\BookStore.dll
+C:\Users\krist\Documents\project-KIHristova22\BookStore\BookStore\bin\Debug\net10.0\app.db
