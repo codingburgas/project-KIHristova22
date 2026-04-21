@@ -11,14 +11,28 @@ public class BookController(ApplicationDbContext db) : Controller
     private readonly ApplicationDbContext _db = db;
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? categoryId)
     {
-        var books = await _db.Books
+        var categories = await _db.Categories
             .AsNoTracking()
-            .Where(b => !b.IsDeleted)
+            .OrderBy(c => c.Name)
+            .ToListAsync();
+
+        ViewBag.Categories = new SelectList(categories, "Id", "Name", categoryId);
+        ViewBag.SelectedCategoryId = categoryId;
+
+        var query = _db.Books
+            .AsNoTracking()
             .Include(b => b.Category)
             .OrderBy(b => b.Title)
-            .ToListAsync();
+            .AsQueryable();
+
+        if (categoryId.HasValue)
+        {
+            query = query.Where(b => b.CategoryId == categoryId.Value);
+        }
+
+        var books = await query.ToListAsync();
 
         // Views are stored under Views/Books (plural) in this project.
         return View("~/Views/Books/Index.cshtml", books);
