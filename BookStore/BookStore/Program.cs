@@ -120,13 +120,9 @@ static async Task SeedRolesAndAdminAsync(IServiceProvider sp)
     var roleManager = sp.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = sp.GetRequiredService<UserManager<ApplicationUser>>();
 
-    var roles = new[] { "Admin", "User" };
-    foreach (var role in roles)
+    if (!await roleManager.RoleExistsAsync("Admin"))
     {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
     }
 
     const string adminEmail = "admin@bookstore.com";
