@@ -1,6 +1,7 @@
 using BookStore.Data;
 using BookStore.Models;
 using BookStore.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -76,6 +77,7 @@ public class BookController(ApplicationDbContext db) : Controller
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Create()
     {
         await PopulateCategoriesAsync();
@@ -83,6 +85,7 @@ public class BookController(ApplicationDbContext db) : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("Title,Price,StockQuantity,CategoryId")] Book book)
     {
