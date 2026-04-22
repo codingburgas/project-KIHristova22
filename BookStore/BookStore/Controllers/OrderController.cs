@@ -28,6 +28,23 @@ public class OrderController(ApplicationDbContext db) : Controller
     }
 
     [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var order = await _db.Orders
+            .AsNoTracking()
+            .Include(o => o.Items)
+            .ThenInclude(oi => oi.Book)
+            .FirstOrDefaultAsync(o => o.Id == id);
+
+        if (order is null)
+        {
+            return NotFound();
+        }
+
+        return View("~/Views/Orders/Details.cshtml", order);
+    }
+
+    [HttpGet]
     public async Task<IActionResult> Create(int bookId)
     {
         var book = await _db.Books

@@ -24,6 +24,7 @@
                     <th>Date</th>
                     <th>Books</th>
                     <th class="text-end">Total</th>
+                    <th class="text-end">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,6 +52,14 @@
                             }
                         </td>
                         <td class="text-end">@total.ToString("0.00")</td>
+                        <td class="text-end">
+                            <a asp-controller="Order"
+                               asp-action="Details"
+                               asp-route-id="@order.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                View Details
+                            </a>
+                        </td>
                     </tr>
                 }
                 </tbody>
