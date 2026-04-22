@@ -26,12 +26,24 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-controller="Book" asp-action="Index">Books</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Order" asp-action="Index">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Category" asp-action="Index">Categories</a>
-                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Category" asp-action="Index">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Order" asp-action="Index">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Book" asp-action="TopBooks">Top Books</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Order" asp-action="Index">Orders</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

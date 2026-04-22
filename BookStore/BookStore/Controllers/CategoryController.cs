@@ -1,9 +1,11 @@
 using BookStore.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class CategoryController(ApplicationDbContext db) : Controller
 {
     private readonly ApplicationDbContext _db = db;

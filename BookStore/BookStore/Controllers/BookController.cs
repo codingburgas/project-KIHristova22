@@ -58,6 +58,7 @@ public class BookController(ApplicationDbContext db) : Controller
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> TopBooks()
     {
         var topBooks = await _db.OrderItems
